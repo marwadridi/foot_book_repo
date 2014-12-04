@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml"> 
+      
+      
+    <ui:define name="pageTitle"> Login</ui:define> 
+    <ui:define name="header"> <center> authentication page</center> </ui:define> 
+    <ui:define name="content">
+    <h:form>
+		<h:panelGrid columns="2">
+			<h:outputText value="login"></h:outputText>
+			<h:inputText value="#{userManager.user.login}"></h:inputText>
+			<h:outputText value="password"></h:outputText>
+			<h:inputSecret value="#{userManager.user.password}"></h:inputSecret>
+		</h:panelGrid>
+		<h:commandButton action="#{userManager.doLogin}" value="login" />
+	</h:form>
+	</ui:define> 
+	
+	 <ui:define name="footer">Esprit 2014 </ui:define> 
+
+</ui:composition>
