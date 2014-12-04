@@ -27,7 +27,8 @@ public class User implements Serializable {
 	public User() {
 		super();
 	}   
-	@Id    
+	@Id 
+	@GeneratedValue (strategy=GenerationType.IDENTITY) 
 	public int getId() {
 		return this.id;
 	}
@@ -63,5 +64,14 @@ public class User implements Serializable {
 	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
 	}
+	public User(String name, String login, String password) {
+		super();
+		this.name = name;
+		this.login = login;
+		this.password = password;
+	}
+	
+	
+	
    
 }

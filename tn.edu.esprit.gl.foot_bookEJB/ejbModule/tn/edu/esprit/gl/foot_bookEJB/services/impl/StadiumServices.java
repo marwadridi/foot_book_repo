@@ -33,4 +33,10 @@ public class StadiumServices implements StadiumServicesRemote,
 		return entityManager.createQuery(jpql).getResultList();
 	}
 
+	@Override
+	public void addStadium(Stadium stadium) {
+		entityManager.persist(stadium);
+		
+	}
+
 }

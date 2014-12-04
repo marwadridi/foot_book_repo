@@ -40,4 +40,10 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 		return userFound;
 	}
 
+	@Override
+	public void addUser(User user) {
+		entityManager.persist(user);
+		
+	}
+
 }

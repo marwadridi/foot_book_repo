@@ -7,4 +7,8 @@ import tn.edu.esprit.gl.foot_bookEJB.model.User;
 @Local
 public interface UserServicesLocal {
 	User login(String login, String password);
+
+	void addUser(User user);
+
+	
 }

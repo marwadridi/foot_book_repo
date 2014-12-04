@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -25,6 +27,7 @@ public class Stadium implements Serializable {
 	}
 
 	@Id
+	@GeneratedValue (strategy=GenerationType.IDENTITY) 
 	public int getId() {
 		return this.id;
 	}
@@ -49,5 +52,12 @@ public class Stadium implements Serializable {
 	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
 	}
+
+	public Stadium(String libele) {
+		super();
+		this.libele = libele;
+	}
+
+	
 
 }

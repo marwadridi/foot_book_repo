@@ -10,4 +10,6 @@ import tn.edu.esprit.gl.foot_bookEJB.model.Stadium;
 public interface StadiumServicesLocal {
 	List<Stadium> findAllStadiums();
 
+	void addStadium(Stadium stadium);
+
 }
