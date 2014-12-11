@@ -36,7 +36,7 @@ public class StadiumCtr {
 		stadiumSelected = datamodel.getRowData();
 		userConnected = userCtr.getUser();
 		System.out.println(stadiumSelected.getLibele());
-		System.out.println(userConnected.getName());
+		System.out.println(userConnected.getFirstName());
 		bookingServicesLocal.bookStadium(userConnected, stadiumSelected,
 				new Date());
 		return "";

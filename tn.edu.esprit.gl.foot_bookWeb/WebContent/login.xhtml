@@ -1,24 +1,29 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/template/template.xhtml"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head> 
+<title>login</title>
+
+</h:head> 
       
-      
-    <ui:define name="pageTitle"> Login</ui:define> 
-    <ui:define name="header"> <center> authentication page</center> </ui:define> 
-    <ui:define name="content">
+    
+  
+  <h:body>
     <h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="login"></h:outputText>
-			<h:inputText value="#{userManager.user.login}"></h:inputText>
-			<h:outputText value="password"></h:outputText>
-			<h:inputSecret value="#{userManager.user.password}"></h:inputSecret>
+			
+			<h:outputLabel value="login"></h:outputLabel>
+			<h:inputText value="#{userManager.login}" />
+			
+			<h:outputLabel value="password"></h:outputLabel>
+			<h:inputSecret value="#{userManager.pwd}" />
 		</h:panelGrid>
 		<h:commandButton action="#{userManager.doLogin}" value="login" />
 	</h:form>
-	</ui:define> 
+</h:body>
 	
-	 <ui:define name="footer">Esprit 2014 </ui:define> 
-
-</ui:composition>
+	
+</html>

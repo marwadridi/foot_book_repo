@@ -36,7 +36,7 @@ public class StadiumServices implements StadiumServicesRemote,
 	@Override
 	public void addStadium(Stadium stadium) {
 		entityManager.persist(stadium);
-		
+
 	}
 
 }

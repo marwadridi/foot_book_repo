@@ -1,36 +1,30 @@
-#page{
-	
-	width:800px;
-	margin:0 auto;
-	
-	
+#body {
+	margin: 6px;
+	padding: 0px;
+	text-align: center;
+	font:81.25% arial, helvetica, sans-serif;
 }
-#header{
-
-	width:100%;
-	height:100px;
-	border:1px solid #000;
-	marger-bottom:16px;
-
-	
-	}
-	
+#header {
+	width: auto;
+	display: block;
+	height: 66px;
+	border: 1px solid #333;
+}
 #content{
-	
-	width:100%;
-	height:400px;
-	margin-right:16px;
-	marger-bottom:16px;
-	border:1px solid #000;
+	float: right;
+	width: 594px;
+	height: 472px;
+	padding: 6px;
+	margin-top: 6px;
+	margin-right: 6px;
+	margin-left: 6px;
+	border: 1px solid #333;
 	}
-	
-	
 #footer{
-	
-	
-	width:100%;
-	height:100px;
-	border:1px solid #000;
+	width: auto;
+	display: block;
+	height: 24px;
+	border: 1px solid #333;
 	
 	}
 

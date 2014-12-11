@@ -6,6 +6,10 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class BookingId implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int idUser;
 	private int idStadium;
 
