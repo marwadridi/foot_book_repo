@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+<h:form id="table">
+<p:dataTable 	id="u" var="us" value="#{gestionUsersCtr.users}"
+					rowKey="#{us.id}"
+					selection="#{gestionUsersCtr.user}" selectionMode="single"
+					paginator="true"
+					
+					rowsPerPageTemplate="5,10,15">
+
+<p:ajax event="rowSelect" listener="#{gestionUsersCtr.onRowSelect}" update=":details"></p:ajax>
+
+<p:column headerText="first Name" filterBy="#{us.firstName}" filterMatchMode="contains">
+
+<h:outputText  value="#{us.firstName}" />
+
+</p:column>
+
+<p:column headerText="last Name">
+
+<h:outputText  value="#{us.lastName}" />
+
+
+</p:column>
+
+
+<p:column   headerText="adresse">
+<h:outputText  value="#{us.adresse}"/>
+
+</p:column>
+
+</p:dataTable>
+<p:commandButton value="new" actionListener="#{gestionUsersCtr.doNew()}"></p:commandButton>
+
+
+</h:form>
+<p:panel id="details" >
+
+<h:form>
+<h:panelGrid columns="2">
+<p:outputLabel  id="first" value="first Name"></p:outputLabel>
+<p:inputText value="#{gestionUsersCtr.user.firstName}" ></p:inputText>
+
+<p:outputLabel  id="last" value="last Name"></p:outputLabel>
+<p:inputText value="#{gestionUsersCtr.user.lastName}"></p:inputText>
+
+
+<p:outputLabel  id="adresee" value="adresse"></p:outputLabel>
+<p:inputText value="#{gestionUsersCtr.user.adresse}"></p:inputText>
+
+<p:outputLabel  id="email" value="email"></p:outputLabel>
+<p:inputText value="#{gestionUsersCtr.user.email}"></p:inputText>
+</h:panelGrid>
+<h:panelGrid columns="3">
+<p:commandButton value="save" actionListener="#{gestionUsersCtr.doSave}" update=":table :details"></p:commandButton>
+<p:commandButton value="cancel" actionListener="#{gestionUsersCtr.doCancel()}"></p:commandButton>
+<p:commandButton value="delete" actionListener="#{gestionUsersCtr.doDelete()}" update=":table :details"></p:commandButton>
+
+
+
+</h:panelGrid>
+
+</h:form>
+
+
+
+
+
+
+</p:panel>
+
+
+
+
+</body> 
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+
+<h:form>
+<h:dataTable value="#{gestionUsersCtr.users}" var="us" border="1">
+
+
+<h:column >
+<f:facet name="header">
+
+<h:outputLabel value="first name" />
+</f:facet>
+<h:outputLabel value="#{us.firstName}" />
+
+</h:column>
+
+<h:column>
+<f:facet name="header">
+
+<h:outputLabel value="last name" />
+</f:facet>
+<h:outputLabel value="#{us.lastName}" />
+
+
+</h:column>
+<h:column>
+<f:facet name="header">
+
+<h:outputLabel value="e mail" />
+</f:facet>
+<h:outputLabel value="#{us.email}" />
+
+</h:column>
+
+
+<h:column>
+
+<f:facet name="header">
+<h:outputLabel value="select" />
+
+</f:facet>
+<h:commandButton value="select" >
+
+<f:setPropertyActionListener target="#{gestionUsersCtr.user}" value="#{us}">
+</f:setPropertyActionListener>
+<f:setPropertyActionListener target="#{gestionUsersCtr.displayForm}" value="true">
+</f:setPropertyActionListener>
+
+</h:commandButton>
+
+
+</h:column>
+
+</h:dataTable>
+<h:commandButton value="new" action="#{gestionUsersCtr.doNew}"  />
+</h:form>
+<h:form rendered="#{gestionUsersCtr.displayForm}">
+
+<h:panelGrid columns="3">
+
+
+<h:outputLabel value="first name" />
+<h:inputText  id="first" value="#{gestionUsersCtr.user.firstName}" required="true" requiredMessage="required" >
+<f:ajax event="blur" render="first firstm"></f:ajax>
+</h:inputText>
+<h:message id="firstm" for="first"   />
+
+
+<h:outputLabel value="Last name" />
+<h:inputText id="last" value="#{gestionUsersCtr.user.lastName}" required="true" requiredMessage="required" validatorMessage="min 2 max 5" >
+<f:validateLength minimum="2" maximum="5"></f:validateLength>
+<f:ajax event="blur" render=" last mlast"></f:ajax>
+</h:inputText>
+
+<h:message for="last"  id="mlast"  style="color:red" />
+<h:outputLabel value="e mail" />
+<h:inputText id="email" value="#{gestionUsersCtr.user.email}" required="true" requiredMessage="required" >
+<f:ajax event="blur" render=" email memail"></f:ajax>
+
+
+</h:inputText>
+<h:message for="email"  id="memail"  />
+
+</h:panelGrid>
+
+<h:panelGrid columns="3">
+
+<h:commandButton value="save" action="#{gestionUsersCtr.doSave()}" />
+<h:commandButton value="delete" action="#{gestionUsersCtr.doDelete()}" />
+<h:commandButton value="cancel" action="#{gestionUsersCtr.doCancel()}" immediate="true" />
+</h:panelGrid>
+
+</h:form>
+
+</body> 
+</html>

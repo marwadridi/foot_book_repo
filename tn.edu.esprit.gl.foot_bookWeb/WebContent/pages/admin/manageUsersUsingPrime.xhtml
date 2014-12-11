@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+<h:form id="datatable">
+
+<p:dataTable 		id="u" var="us" value="#{gestionUsersCtr.users}"
+					rowKey="#{us.id}" widgetVar="5"
+					selection="#{gestionUsersCtr.user}" selectionMode="single"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} 
+					{PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+
+<p:ajax event="rowSelect" listener="#{gestionUsersCtr.onRowSelect}" update=":details"></p:ajax>
+
+<p:column headerText="first name" 
+		  filterBy="#{us.firstName}" 
+		  filterMatchMode="contains">
+<h:outputText value="#{us.firstName}" />
+					</p:column>
+
+<p:column headerText="last name">
+<h:outputText value="#{us.lastName}" />
+
+</p:column>
+
+
+<p:column headerText="adresse">
+<h:outputText value="#{us.adresse}" />
+
+</p:column>
+
+<p:column headerText="email">
+<h:outputText value="#{us.email}" />
+
+</p:column>
+
+
+</p:dataTable>
+
+<p:commandButton  value="new" actionListener="#{gestionUsersCtr.doNew()}" update=":details" ></p:commandButton>
+
+</h:form>
+<p:panel id="details" visible="#{gestionUsersCtr.displayForm}" >
+
+<h:form rendered="#{gestionUsersCtr.displayForm}">
+<h:panelGrid columns="3">
+<p:outputLabel id="first" value="first name" />
+<p:inputText id="firstT" value="#{gestionUsersCtr.user.firstName}" required="true" requiredMessage="required">
+<p:ajax event="blur" update="firstT first msgFirst"></p:ajax>
+</p:inputText>
+<h:message  id="msgFirst" for="firstT" />
+<p:outputLabel id="last" value="last name" />
+<p:inputText id="lastT" value="#{gestionUsersCtr.user.lastName}" required="true" requiredMessage="required" >
+
+</p:inputText>
+<h:message  id="msgLast" for="lastT" />
+<p:outputLabel id="adr" value="adresse" />
+<p:inputText id="adre" value="#{gestionUsersCtr.user.adresse}" required="true" requiredMessage="required">
+
+</p:inputText>
+<h:message  id="msgAdr" for="adre" />
+<p:outputLabel id="email" value="e-mail" />
+<p:inputText id="emai" value="#{gestionUsersCtr.user.email}" required="true" requiredMessage="required">
+
+</p:inputText>
+<h:message  id="msgEmail" for="emai" />
+</h:panelGrid>
+
+<h:panelGrid columns="3">
+<p:commandButton value="save" actionListener="#{gestionUsersCtr.doSave()}" update=":details :datatable" ></p:commandButton>
+<p:commandButton value="delete" actionListener="#{gestionUsersCtr.doDelete()}" update=":details :datatable"></p:commandButton>
+<p:commandButton value="cancel" actionListener="#{gestionUsersCtr.doCancel()}" update=":details" immediate="true"></p:commandButton>
+</h:panelGrid>
+
+</h:form>
+
+</p:panel>
+
+
+</body> 
+
+</html>
